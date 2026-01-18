@@ -27,6 +27,8 @@ I use Home Assistant for emailing me when the water is low and manual control of
 
 When I added up all the components, it came to a somewhat shocking $100+ USD though a lot of that is due to the connecting hardware.  That's still way cheaper than having a 5 zone commercial unit though.  
 
-The pumps aren't great. They are only $2 each so I'm not surprised. They have just enough water column head capacity to do what I want though one of the pots is right on the edge given it's height.  If you look in the code, you'll see one zone waters on a longer on cycle than the others. That's for this pot.
+The pumps aren't great. They are only $2 each so I'm not surprised. They have just enough water column head capacity to do what I want though one of the pots is right on the edge given it's height.  If you look in the code, you'll see one zone waters on a longer on cycle than the others. That's for this pot. I didn't do any noise or spike supression of the motor power circuits since I figured they were USB only and that would be within the motor.  I did find that the float switch GPIO would occasionally trigger when a pump turned on but I solved that through software. 
+
+A note on the ESP32-S3 devboard: You could get away with a simpler ESP32 device since the S3 is overkill for the needs of this unit.  Note that the footprint in the schematic isn't quite the same as the board I used with the only difference of note being the ADC inputs. The ADC inputs you use isn't that important, though look to keep within the ADC-1 range rather than ADC-2 since that gets used for the chip's wifi apparently.  Just update the YAML for ESPHome accordingly. 
 
 Enjoy
