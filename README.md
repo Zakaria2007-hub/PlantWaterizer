@@ -31,7 +31,7 @@ Plenty of hot glue to keep those connectors under control. The aviation plugs sh
 While this design uses HomeAssistant for status reporting and dashboarding,  it will run standalone once flashed since the logic controlling the moisture is in the ESP32.  You'll need to set the timeouts on the network and Home Assistant API to 0 in the code if you wish to run standalone.
 I use Home Assistant for emailing me when the water is low and manual control of the pumps, and the dashboarding of course.   HA also controls the grow lights, though as a simple timer. 
 
-When I added up all the components, it came to a somewhat shocking $100+ USD though a lot of that is due to the connecting hardware.  That's still way cheaper than having a 5 zone commercial unit though.  
+When I added up all the components, it came to a somewhat shocking $100+ USD though a lot of that is due to the connecting hardware.  That's still way cheaper than having a 5 zone commercial unit though.  Costs can be saved in the connection hardware. The controller board itself probably tops out at around $25 with the main cost coming from the ESP32 and the MOSFETs, at least a hobbyist levels of purchasing power. 
 
 The pumps aren't great. They are only $2 each so I'm not surprised. They have just enough water column head capacity to do what I want though one of the pots is right on the edge given it's height.  If you look in the code, you'll see one zone waters on a longer on cycle than the others. That's for this pot. I didn't do any noise or spike supression of the motor power circuits since I figured they were USB only and that would be within the motor.  I did find that the float switch GPIO would occasionally trigger when a pump turned on but I solved that through software. 
 
