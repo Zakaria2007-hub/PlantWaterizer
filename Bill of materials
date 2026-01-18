@@ -22,7 +22,9 @@ Either:
 OR
 
 1x CQRobot Capacitive liquid level sensor ( https://www.amazon.com/dp/B0FL22MJKX ). I use this.  It requires power but otherwise connects to the same pins as a float switch and is either on or off. It can be tuned for sensitivity. 
-The float switch will need a mount to keep it at the right depth in the bucket. This CQRobot sensor just needs to be stuck on the outside of the bucket at the right depth. Far nicer, but also 5x the price. 
+The float switch will need a mount to keep it at the right depth in the bucket. This CQRobot sensor just needs to be stuck on the outside of the bucket at the right depth. Far nicer, but also 5x the price.  The float switch is connected between
+the GPIO pin and ground, with the GPIO set to be pulled up through an internal resistor. The  CQRobot sensor does the same but must also be given a 5V supply. There are DIP switches on the sensor board - make sure that is set to 3v3 output 
+otherwise you'll fry the ESP32. 
 
 Connection hardware and casing is up to you.   For reference only: 
 
