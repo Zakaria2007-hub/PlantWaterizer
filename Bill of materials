@@ -1,0 +1,32 @@
+This list is what I used to create the waterizer based on what I had in the parts drawers.  There are options of course.
+
+Circuit Board: 
+
+copper strip board: 73mm x 100mm
+ESP32-S3-N8R2 DevkitC1.   Note: this board is overkill for the device  and the footprint in the schematic doesn't directly match the stripboard layout (the ADC pins are a little off )
+3 x 330R resistors
+5 x IRLB8721 N-Channel MOSFETs
+3 x 5mm LEDs ( Red, Blue , Green )
+
+Misc 2.54 header pins for connectivity off-board
+Power header terminal for connecting power to board.
+
+Sensors and pumps: 
+
+5x Capacitive Soil Moisture Sensor V2 ( https://www.amazon.com/dp/B094J8XD83 )
+5x Submersible pumps ( https://www.amazon.com/dp/B01N47M0KW ). These are low power and cheap.  The head of water is not great though it's good enough for my needs
+
+Either:
+1x uxcell ZP4510 float switch 
+
+OR
+
+1x CQRobot Capacitive liquid level sensor ( https://www.amazon.com/dp/B0FL22MJKX ). I use this.  It requires power but otherwise connects to the same pins as a float switch.  
+
+Connection hardware and casing is up to you.   For reference only: 
+
+Sensor connectors: 6x GX12 12mm  Aviation connectors  ( https://www.amazon.com/dp/B07M5SLS3P) 
+Pump connectors: 5x  24AEWG USB2.0 Pigtail Type A female  ( The pumps are USB-A terminated )
+Input power:  USB-C female pigtail ( I originally planned to put a PSU in the case but simplified the design
+LED Bezels to suit ( https://www.amazon.com/dp/B0974DL4QR )
+Power switch to suit ( https://www.amazon.com/dp/B095P1LGR3 )
